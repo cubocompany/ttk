@@ -1,0 +1,81 @@
+{
+  "name": "@cubocompany/ttk",
+  "version": "1.0.0",
+  "description": "TTK (Tiny Token Kit) — Prompt compression for AI coding agents. Intercepts user messages before the LLM via OpenCode plugin hook.",
+  "type": "module",
+  "bin": {
+    "ttk": "./dist/cli/index.js",
+    "tinytoken": "./dist/cli/index.js"
+  },
+  "main": "./dist/plugin/index.js",
+  "exports": {
+    ".": "./dist/plugin/index.js",
+    "./cli": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist/",
+    "skill/"
+  ],
+  "scripts": {
+    "build": "tsc --noEmit && bun build src/plugin/index.ts --outfile dist/plugin/index.js --target node --format esm --minify && bun build src/cli/index.ts --outfile dist/cli/index.js --target node --format esm",
+    "build:watch": "bun build src/plugin/index.ts --outfile dist/plugin/index.js --target node --format esm --watch & bun build src/cli/index.ts --outfile dist/cli/index.js --target node --format esm --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "bun test || true",
+    "dev": "bun run src/cli/index.ts",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run",
+    "prepublishOnly": "bun run build"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.14.19",
+    "@opencode-ai/sdk": "^1.14.19",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.0",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@types/node": "^22.19.17",
+    "@types/prompts": "^2.4.9",
+    "semantic-release": "^24.2.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1",
+    "prompts": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubocompany/ttk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cubocompany/ttk/issues"
+  },
+  "homepage": "https://github.com/cubocompany/ttk#readme",
+  "keywords": [
+    "ttk",
+    "tinytoken",
+    "tiny-token-kit",
+    "opencode",
+    "opencode-plugin",
+    "prompt-compression",
+    "token-efficient",
+    "token-saver",
+    "claude-code",
+    "kiro",
+    "cursor",
+    "ollama",
+    "llm",
+    "agent-skills"
+  ],
+  "author": "Cubo Company",
+  "license": "MIT"
+}
